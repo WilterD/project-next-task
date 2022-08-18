@@ -1,8 +1,7 @@
-import { TaskContext } from "../context/TaskContext";
-import { useContext } from "react";
+import { useTask } from "../context/TaskContext";
 
 const Home = () => {
-  const { hello } = useContext(TaskContext);
+  const { hello } = useTask();
 
   console.log(hello);
 
