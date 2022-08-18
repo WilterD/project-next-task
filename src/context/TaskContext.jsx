@@ -1,19 +1,18 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 export const TaskContext = createContext();
 
-export const useTask = () => {
-   const context = useContext(TaskContext);
-    return context;
-}
+export const useTask = () => useContext(TaskContext);
 
 // cualquier componente que nos pasen Hijo de TaskContext puede acceder a este contexto
 export const TaskProvider = ({ children }) => {
-
-    let hello = "cosas";
+  const [tasks, setTasks] = useState([
+    { id: "1", nombre: "tarea 1", description: "todo bien" },
+    { id: "2", nombre: "tarea 2", description: "todo bien" },
+  ]);
 
   return (
     // devolver un componente
-    <TaskContext.Provider value={{hello}}>{children}</TaskContext.Provider>
+    <TaskContext.Provider value={{ tasks }}>{children}</TaskContext.Provider>
   );
 };

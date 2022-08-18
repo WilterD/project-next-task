@@ -1,14 +1,17 @@
+import Layouts from "../Components/Layouts";
 import { useTask } from "../context/TaskContext";
 
 const Home = () => {
-  const { hello } = useTask();
+  const { tasks } = useTask();
 
-  console.log(hello);
+  console.log(tasks);
 
   return (
-    <div>
+      <Layouts>
+        <div>
       <h1>Home</h1>
-    </div>
+      </div>
+      </Layouts>
   );
 };
 
