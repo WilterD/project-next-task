@@ -4,12 +4,12 @@ import { useTask } from "../context/TaskContext";
 const Home = () => {
   const { tasks } = useTask();
 
-  console.log(tasks);
+  // console.log(tasks);
 
   return (
       <Layouts>
         <div>
-      <h1>Home</h1>
+      <h1 className="bg-red">Home</h1>
       </div>
       </Layouts>
   );

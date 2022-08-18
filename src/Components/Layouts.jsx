@@ -16,7 +16,7 @@ const Layouts = ({ children }) => {
       <header>
         <Link href="/">
           <a>
-            <h1>Task App</h1>
+            <h1 className="bg-orange-900">Task App</h1>
           </a>
         </Link>
           <span>{tasks.length} tareas</span>

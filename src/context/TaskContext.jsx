@@ -11,8 +11,12 @@ export const TaskProvider = ({ children }) => {
     { id: "2", nombre: "tarea 2", description: "todo bien" },
   ]);
 
+  const createTask = (title, descripcion) => {
+    setTasks([...tasks,{titulo,descripcion,id:"2"}])
+  }
+
   return (
     // devolver un componente
-    <TaskContext.Provider value={{ tasks }}>{children}</TaskContext.Provider>
+    <TaskContext.Provider value={{ tasks , createTask}}>{children}</TaskContext.Provider>
   );
 };
