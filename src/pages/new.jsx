@@ -15,6 +15,8 @@ const TaskFormPage = () => {
   const handleSubmit = (e) => { // al presionar el boton guardar
     e.preventDefault();
     console.log("enviando");
+    createTask(task.titulo, task.descripcion); // enviar tarea al contexto
+
   };
   const handleChange = (e) => { // al tipear hacer
     const { name, value } = e.target; // extraer lo que tipea el usuario
@@ -40,7 +42,7 @@ const TaskFormPage = () => {
           onChange={handleChange}
         />
         <br />
-        <button onClick={handleSubmit}>Guardar</button>
+        <button onClick={handleSubmit} disabled={!task.titulo} className="bg-green-500 hover:bg-green-400 px-4 py-2 rounded-sm disabled:opacity-30">Guardar</button>
       </form>
     </Layouts>
   );

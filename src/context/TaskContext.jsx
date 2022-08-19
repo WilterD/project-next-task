@@ -1,22 +1,26 @@
 import { createContext, useContext, useState } from "react";
+// importar funciones, crear contexto, uso del contexto y cambios de estado
 
-export const TaskContext = createContext();
+export const TaskContext = createContext(); // creacion del contexto global
 
-export const useTask = () => useContext(TaskContext);
+export const useTask = () => useContext(TaskContext); // funcion para usar el contexto en cada componente hijo
 
-// cualquier componente que nos pasen Hijo de TaskContext puede acceder a este contexto
+// cualquier componente Hijo de TaskContext puede acceder a este contexto, enviando su children
 export const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState([
-    { id: "1", nombre: "tarea 1", description: "todo bien" },
-    { id: "2", nombre: "tarea 2", description: "todo bien" },
+    // arreglo de tareas y funcion para actualizarlo
+    { id: "1", titulo: "tarea 1", descripcion: "todo bien" },
+    { id: "2", titulo: "tarea 2", descripcion: "todo bien" },
   ]);
 
-  const createTask = (title, descripcion) => {
-    setTasks([...tasks,{titulo,descripcion,id:"2"}])
-  }
+  const createTask = (titulo, descripcion) => {
+    setTasks([...tasks, { titulo, descripcion, id: tasks.length + 1 }]);
+  };
 
   return (
-    // devolver un componente
-    <TaskContext.Provider value={{ tasks , createTask}}>{children}</TaskContext.Provider>
+    // devolver un componente u funcion que se pueda usar en cualquier componente que nos pasen hijo de TaskContext
+    <TaskContext.Provider value={{ tasks, createTask }}>
+      {children}
+    </TaskContext.Provider>
   );
 };
